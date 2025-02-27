@@ -5,8 +5,18 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('hello')
+  getHello(): object {
+    return { message: 'Hello from NestJS API!' };
   }
+
+  @Get('status')
+  getStatus(): object {
+    return { status: 'API is running!' };
+  }
+
+  // @Get()
+  // getHello(): string {
+  //   return this.appService.getHello();
+  // }
 }
