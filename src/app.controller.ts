@@ -18,4 +18,9 @@ export class AppController {
   getStatus(): object {
     return this.appService.getStatus();
   }
+
+  @Get('cloudinary')
+  getCloudinary(): string {
+    return this.appService.getCloudinary();
+  }
 }
