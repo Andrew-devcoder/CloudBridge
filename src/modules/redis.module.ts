@@ -3,7 +3,6 @@ import { Module, Global } from '@nestjs/common';
 import { RedisController } from 'src/controllers/redis.controller';
 import { RedisService } from 'src/services/redis.service';
 
-@Global()
 @Module({
   // providers: [
   //   {
