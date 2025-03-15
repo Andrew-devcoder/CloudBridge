@@ -1,20 +1,20 @@
-import { createClient } from 'redis';
+// import { createClient } from 'redis';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export const redisClient = createClient({
-  username: 'default',
+import Redis from 'ioredis';
+
+export const redisClient = new Redis({
+  host: process.env.REDIS_HOST,
+  port: Number(process.env.REDIS_PORT),
   password: process.env.REDIS_PASSWORD,
-  socket: {
-    host: process.env.REDIS_HOST,
-    port: Number(process.env.REDIS_PORT),
-  },
+  username: 'default',
 });
 
 redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
 export const connectRedis = async () => {
-  if (!redisClient.isOpen) {
+  if (!redisClient.status || redisClient.status === 'end') {
     await redisClient.connect();
   }
 };
