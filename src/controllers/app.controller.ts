@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from '../services/app.service';
 
 @Controller()
@@ -23,5 +23,12 @@ export class AppController {
   @Get('cloudinary/images')
   async getCloudinaryImages(): Promise<object> {
     return this.appService.getCloudinaryImages();
+  }
+
+  @Get('cloudinary/images/:public_id')
+  async getCloudinaryImage(
+    @Param('public_id') publicId: string,
+  ): Promise<object> {
+    return this.appService.getCloudinaryImage(publicId);
   }
 }
