@@ -18,6 +18,5 @@ import { RedisService } from 'src/services/redis.service';
   imports: [],
   controllers: [RedisController],
   providers: [RedisService],
-  exports: [RedisModule],
 })
 export class RedisModule {}
