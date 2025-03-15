@@ -9,13 +9,4 @@ cloudinary.config({
   api_url: process.env.CLOUDINARY_URL,
 });
 
-cloudinary.api
-  .ping()
-  .then((result) => {
-    console.log('Cloudinary connection successful:', result);
-  })
-  .catch((error) => {
-    console.error('Cloudinary connection failed:', error);
-  });
-
 export const CloudinaryConfig = cloudinary;
