@@ -5,7 +5,7 @@ import { CloudinaryModule } from './cloudinary.module';
 import { RedisModule } from './redis.module';
 
 @Module({
-  imports: [AppService, CloudinaryModule, RedisModule],
+  imports: [CloudinaryModule, RedisModule],
   controllers: [AppController],
   providers: [AppService],
 })

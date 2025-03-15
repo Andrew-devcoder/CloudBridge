@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { redisClient, connectRedis } from '../conf/redis.config';
-import { RedisController } from 'src/controllers/redis.controller';
+import { RedisController } from '../controllers/redis.controller';
+import { RedisService } from '../services/redis.service';
 
 @Module({
   providers: [
+    RedisService,
     {
       provide: 'REDIS_CLIENT',
       useFactory: async () => {
@@ -12,8 +14,7 @@ import { RedisController } from 'src/controllers/redis.controller';
       },
     },
   ],
-  exports: ['REDIS_CLIENT'],
-  imports: [],
   controllers: [RedisController],
+  exports: [RedisService],
 })
 export class RedisModule {}
