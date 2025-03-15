@@ -4,8 +4,7 @@ import { CloudinaryService } from '../services/cloudinary.service';
 import { RedisService } from '../services/redis.service';
 
 @Module({
-  imports: [RedisService],
   controllers: [CloudinaryController],
-  providers: [CloudinaryService],
+  providers: [CloudinaryService, RedisService],
 })
 export class CloudinaryModule {}
