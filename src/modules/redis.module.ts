@@ -1,17 +1,14 @@
 import { Module, Global } from '@nestjs/common';
-import Redis from 'ioredis';
+import { redisClient, connectRedis } from '../conf/redis.config';
 
 @Global()
 @Module({
   providers: [
     {
       provide: 'REDIS_CLIENT',
-      useFactory: () => {
-        return new Redis({
-          host: process.env.REDIS_HOST,
-          port: Number(process.env.REDIS_PORT),
-          password: process.env.REDIS_PASSWORD,
-        });
+      useFactory: async () => {
+        await connectRedis();
+        return redisClient;
       },
     },
   ],
