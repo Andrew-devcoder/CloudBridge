@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CloudinaryController } from 'src/controllers/cloudinary.controller';
-import { CloudinaryService } from 'src/services/cloudinary.service';
+import { CloudinaryController } from '../controllers/cloudinary.controller';
+import { CloudinaryService } from '../services/cloudinary.service';
 
 @Module({
   imports: [],
