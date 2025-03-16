@@ -18,34 +18,16 @@ export class CloudinaryService {
     }
   }
 
-  // async getCloudinaryImage(publicId: string): Promise<object> {
-  //   try {
-  //     const result = await CloudinaryConfig.api.resource(publicId);
-  //     await this.redisService.set(publicId, JSON.stringify(result));
-  //     return { success: true, image: result };
-  //   } catch (error) {
-  //     return {
-  //       success: false,
-  //       message: 'Failed to fetch image!',
-  //       error: error.message,
-  //     };
-  //   }
-  // }
-
   async getCloudinaryImage(publicId: string): Promise<object> {
-    // Перевіряємо, чи є вже дані у кеші (Redis)
     const cachedImage = await this.redisService.get(publicId);
 
     if (cachedImage) {
-      // Якщо є в кеші — повертаємо його
       return { success: true, image: JSON.parse(cachedImage) };
     }
 
-    // Якщо нема в кеші, робимо запит до Cloudinary
     try {
       const result = await CloudinaryConfig.api.resource(publicId);
 
-      // Зберігаємо отриманий JSON в Redis
       await this.redisService.set(publicId, JSON.stringify(result));
 
       return { success: true, image: result };
