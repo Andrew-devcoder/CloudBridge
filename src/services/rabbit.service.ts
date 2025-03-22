@@ -12,8 +12,9 @@
 //     });
 //   }
 // }
+
 import { Injectable, Inject } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientProxy, EventPattern } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable()
@@ -27,5 +28,10 @@ export class RabbitMQService {
     } catch (err) {
       console.error('Error sending message:', err);
     }
+  }
+
+  @EventPattern('image_request')
+  async handleImageRequest(message: string) {
+    console.log('Received message:', message);
   }
 }
