@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from '../services/app.service';
+import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -8,5 +9,10 @@ export class AppController {
   @Get('')
   async getStatus(): Promise<object> {
     return this.appService.getStatus();
+  }
+
+  @Get('favicon.ico')
+  getFavicon(@Res() res: Response) {
+    res.status(204).end();
   }
 }
