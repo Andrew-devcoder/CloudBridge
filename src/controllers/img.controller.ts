@@ -6,6 +6,6 @@ export class ImgController {
   constructor(private readonly appService: AppService) {}
   @Get(':publicId')
   async getImage(@Param('publicId') publicId: string): Promise<object> {
-    return this.appService;
+    return this.appService.getImage(publicId);
   }
 }
