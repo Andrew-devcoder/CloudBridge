@@ -24,6 +24,7 @@ export class AppService {
         return { success: true, image: JSON.parse(cachedImage) };
       })
       .catch(() => {
+        console.log('[AppService] CACHE_MISS – sending to broker');
         this.rabbitService.sendMessage(publicId);
         return {
           success: false,
