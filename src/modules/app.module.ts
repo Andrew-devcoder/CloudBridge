@@ -4,7 +4,7 @@ import { AppService } from '../services/app.service';
 import { CloudinaryModule } from './cloudinary.module';
 import { RedisModule } from './redis.module';
 import { RabbitMQModule } from './rabbit.module';
-import { ImgController } from 'src/controllers/img.controller';
+import { ImgController } from '../controllers/img.controller';
 
 @Module({
   imports: [CloudinaryModule, RedisModule, RabbitMQModule],
