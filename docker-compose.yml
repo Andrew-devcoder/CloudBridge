@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: api
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    container_name: worker
+    depends_on:
+      - api
+    links:
+      - api
+    env_file:
+      - .env
+    restart: unless-stopped
