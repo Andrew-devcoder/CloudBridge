@@ -11,11 +11,9 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
-  // const port = process.env.PORT || 3000;
-  // await app.listen(port);
-  await app.listen(3000, '0.0.0.0');
-  // console.log(`🚀 Server is running on: http://localhost:${port}`);
-  console.log(`🚀 Server is running on: http://localhost:3000`);
+  await app.listen(process.env.PORT || 3000, '0.0.0.0');
+
+  console.log('🚀 Server is running');
 }
 
 bootstrap();

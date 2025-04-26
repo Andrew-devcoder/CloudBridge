@@ -29,7 +29,8 @@ export class RabbitService {
 
     this.webSocketService.emitImageReady(request);
 
-    // this.redisService.set(message, JSON.stringify(request));
+    this.redisService.set(publicId, JSON.stringify(requestCloudinary));
+
     return { status: 'ok', received: message };
   }
 }
