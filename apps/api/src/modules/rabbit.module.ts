@@ -11,7 +11,6 @@ import { RabbitMQService } from '../services/rabbit.service';
         transport: Transport.RMQ,
         options: {
           urls: rabbitMqConfigApi.options!.urls,
-          queue: 'image_request',
           queueOptions: {
             durable: false,
           },

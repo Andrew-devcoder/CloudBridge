@@ -27,6 +27,8 @@ export class RabbitService {
       socketId: socketId,
     };
 
+    console.log('[Worker] 📥 Got image request for:', socketId, publicId);
+
     this.webSocketService.emitImageReady(request);
 
     this.redisService.set(publicId, JSON.stringify(requestCloudinary));

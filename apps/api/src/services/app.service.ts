@@ -17,8 +17,6 @@ export class AppService {
     return this.redisService
       .get(publicId)
       .then((cachedImage) => {
-        console.log('[AppService] Redis GET result:', cachedImage);
-
         if (!cachedImage) {
           throw new Error('CACHE_MISS');
         }
@@ -26,7 +24,6 @@ export class AppService {
         return JSON.parse(cachedImage);
       })
       .catch(() => {
-        console.log('[AppService] CACHE_MISS – sending to broker');
         this.rabbitService.sendMessage({ publicId, socketId });
         return {
           success: false,

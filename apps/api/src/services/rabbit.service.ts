@@ -11,6 +11,12 @@ export class RabbitMQService {
     socketId: string;
   }): Promise<void> {
     try {
+      console.log(
+        '[RabbitMQService] Sending payload ID:',
+        payload.publicId,
+        payload.socketId,
+      );
+
       await lastValueFrom(this.client.send('image_request', payload));
       console.log('[RabbitMQService] Message sent:', payload);
     } catch (err) {
