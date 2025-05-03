@@ -1,4 +1,4 @@
-import { RmqOptions, Transport } from '@nestjs/microservices';
+import { ClientProviderOptions, Transport } from '@nestjs/microservices';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -8,7 +8,8 @@ if (!RABBIT_URL) {
   throw new Error('🐰 RABBIT_URL is not defined in environment variables!');
 }
 
-export const rabbitMqConfigApi: RmqOptions = {
+export const rabbitClientConfig: ClientProviderOptions = {
+  name: 'cloudinary',
   transport: Transport.RMQ,
   options: {
     urls: [RABBIT_URL],

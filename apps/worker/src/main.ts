@@ -12,7 +12,7 @@ async function bootstrap() {
 
   // 2️⃣ Стартуємо мікросервіс
   await app.startAllMicroservices();
-  console.log('✨ Worker microservice is listening to RabbitMQ...');
+  console.log('✨✅ API microservice connected to RabbitMQ ');
 
   // 3️⃣ WebSocket сервер
   const server = createServer(app.getHttpAdapter().getInstance());
@@ -31,6 +31,7 @@ async function bootstrap() {
   });
 
   await app.init();
+
   server.listen(3000, () => {
     console.log('🚀 Server is running on port 3000');
   });
